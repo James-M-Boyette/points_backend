@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
     get "/payers" => "payers#index"
     get "/payers/:id" => "payers#show"
+
+    post "/u_transaction" => "user_transactions#reconcile"
   end
 end

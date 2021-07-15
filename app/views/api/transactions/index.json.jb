@@ -1,0 +1,11 @@
+@transactions.map do |transaction|
+  {
+    message: "Here's what we have for this transaction",
+    id: transaction.id,
+    company_id: transaction.company_id,
+    # change this to payer name
+    points: transaction.point_amount,
+    # make sure this returns as the properly-formatted date
+    timestamp: transaction.timestamp,
+  }
+end

@@ -1,0 +1,10 @@
+{
+  message: "Here's this specific transation:",
+  # id: @transaction.id,
+  company_id: @transaction.company_id,
+  # need to pass name via association, later
+  # name: @transaction.name,
+  points: @transaction.point_amount,
+  # make sure this returns as the properly-formatted date
+  timestamp: @transaction.timestamp,
+}

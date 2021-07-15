@@ -1,0 +1,8 @@
+{
+  message: "Here's this specific payer:",
+  # id: @payer.id,
+  company_id: @payer.company_id,
+  # need to pass name via association, later ..?
+  payer: @payer.name,
+  points: @payer.point_total,
+}

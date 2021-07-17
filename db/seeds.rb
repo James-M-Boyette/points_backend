@@ -15,7 +15,7 @@ Transaction.create!([
 ])
 
 Payer.create!([
-  { name: "DANNON", company_id: 0001, point_total: 0 },
-  { name: "UNILEVER", company_id: 0002, point_total: 0 },
-  { name: "MILLER COORS", company_id: 0003, point_total: 0 },
+  { name: "DANNON", company_id: 0001, point_total: 1100 },
+  { name: "UNILEVER", company_id: 0002, point_total: 200 },
+  { name: "MILLER COORS", company_id: 0003, point_total: 10,000 },
 ])

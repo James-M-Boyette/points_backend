@@ -1,9 +1,8 @@
 @payers.map do |payer|
   {
-    message: "Here's what we have for this payer/company",
-    id: payer.id,
-    # comment-out / delete this
-    company_id: payer.company_id,
+    # message: "Here's what we have for this payer/company",
+    # id: payer.id,
+    # company_id: payer.company_id,
     payer: payer.name,
     points: payer.point_total,
   }

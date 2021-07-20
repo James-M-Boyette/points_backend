@@ -12,6 +12,10 @@ class Api::TransactionsController < ApplicationController
     )
 
     if @transaction.save
+      @payer_balance = Payer.where(company_id: @transaction[:company_id]).pluck(:point_total).join().to_i + @transaction[:point_amount].to_i
+
+      # Using the company_id of the current_transaction, find the Payer (in the "Payer" table) with the matching company_id; then update that payer's point_total with our @payer_balance
+      Payer.where(company_id: @transaction[:company_id]).update(point_total: @payer_balance)
       render "show.json.jb"
     else
       render json: { errors: @transaction.errors.full_messages }, status: :unprocessable_entity

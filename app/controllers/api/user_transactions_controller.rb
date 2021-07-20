@@ -2,11 +2,10 @@ class Api::UserTransactionsController < ApplicationController
   def reconcile
     # @points_balance will track what happens to the initial user expenditure as it's reconciled with the transactions in our Transactions table
     @points_balance = params[:points].to_i
+    @expenditures = {}
+    # Note: our hashmap needs to be RETURNED as {key of "payer": value of name stored in Payer, key of "points": value of point_amount in @current_transaction}
 
-    # Trying to grab the timestamp and point amount associated
-    # @test = Transaction.find_by(id: 1)
-
-    # Payer.where(company_id: 3)[:point_total] = Payer.where(company_id: 3).pluck(:point_total).join().to_i - Transaction.where(id: 4)[:point_amount].to_i
+    # { Payer.where(company_id: @current_transaction[:company_id]) }.pluck(:name):, points:
 
     # For all transactions, beginning with the first ENTERED in our table,
     Transaction.all.each do |transaction|
@@ -16,18 +15,14 @@ class Api::UserTransactionsController < ApplicationController
       # Check, before we process the @current_transaction, whether our current @points_balance still has a remainder of points to be reconciled (a non-zero amount) ... if there are still points left, "subtract" the @current_transaction's point_amount from it
       if @points_balance > 0
         @points_balance -= @current_transaction[:point_amount].to_i
-        # p "HERE IS THE CURRENT POINTS BALANCE"
-        # p @points_balance
         # Store the sum of the current transaction's *payer* point_total and the current transaction's point_amount in an instanced variable
         @payer_balance = Payer.where(company_id: @current_transaction[:company_id]).pluck(:point_total).join().to_i - @current_transaction[:point_amount].to_i
-        # p "HERE IS THE CURRENT PAYER BALANCE (#{@payer_balance}) to be WRITTEN to payer"
-        # p @payer_balance
         # Using the company_id of the current_transaction, find the Payer (in the "Payer" table) with the matching company_id; then update that payer's point_total with our @payer_balance
         Payer.where(company_id: @current_transaction[:company_id]).update(point_total: @payer_balance)
+        @payer = { Payer.where(company_id: @current_transaction[:company_id]).pluck(:name).join() => @current_transaction[:point_amount].to_i }
       else
         # If our @points_balance is =< 0, then we have apporitoned all user points and we can stop
-        # But we need to refund any additional points expended to the last payer (because there are situations where the transaction is for more than the remaining user point_balance remaining)
-        # We also need to return the hash map data
+        # But we need to refund any additional points expended to the last payer (because there are situations where the transaction is for more than the remaining user point_balance remaining), so ...
         break
       end
     end
@@ -39,14 +34,9 @@ class Api::UserTransactionsController < ApplicationController
     # Give back that remainder to the last payer
     Payer.where(company_id: @previous_transaction_id).update(point_total: @remainder_balance)
 
-    render json: @remainder_balance
+    render json: @payer
     # render json: @payer_balance
-    # 2021-7-17T18:37 ... currently, we're storing a final, correct balance in points_balance of -5300
 
-    # render json: Payer.where(company_id: 1).pluck(:point_total)
-    # render json: Payer.find_by(@current_transaction[company_id:])
-
-    # Render View page
     # render "index.json.jb"
   end
 end
@@ -58,7 +48,7 @@ end
 #   > DONE WITH the caveat that the amount should be up-to whatever brings the overall balance of the Payer total to "0"
 #   > DONE Update the given payer's total after the @points_balance total is updated
 #   > DONE Ensure that the "add transaction" route is a post route
-#   > cUrrently, Miller Coors has a payer point balance of 0 (instead of 5300) ... Note: currently, the User points_balance is storing -5300 upon break of the loop
+#   > DONE Re-allocate excess points - those not needed to resolve a user expenditure - back to the payer
 #   > AFTER payer balance updates, Store each transaction's company & point value (?positive or negative?) in an hash map
 #   > We need to figure out how to pre-sort the transactions based on timestamp
 #   > We need to sort out timestamp creation in the proper format

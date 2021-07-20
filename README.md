@@ -5,10 +5,10 @@
 * You can run an index action to see every transaction (that's been logged so-far) in the Transactions database (https://points-payer-backend.herokuapp.com/api/transactions)
 * Run an index action to see all payer point-totals in the Payers database (https://points-payer-backend.herokuapp.com/api/points_balance)
 * And you can even run a user-expenditure route (http://localhost:3000/api/spend_points)
+-
+* Note: *A seed file is provided, should you wish to download & create these demo databases ($ rails db:seed   will create a Payer database & a Transactions database)*
 
-* Note: A seed file is provided, should you wish to download & create these demo databases ($ rails db:seed   will create a Payer database & a Transactions database)
-
-Please feel free to test these endpoints (baring in mind that calling the /spend_points endpoint will alter the Payer database's point totals each time it is run)
+Please feel free to test these endpoints (baring in mind that calling the /spend_points endpoint will *alter* the Payer database's *point totals* each time it is run)
 
 # 
 

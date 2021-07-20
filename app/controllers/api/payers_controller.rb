@@ -3,11 +3,13 @@ class Api::PayersController < ApplicationController
     # @payers = Payer.all
     # render "index.json.jb"
 
-    # To satisfy explicit output of exercise, here is an alternative approach:
+    # To satisfy explicit output of exercise/request from Frontend designer, here is an alternative return:
+
     balances = {}
     Payer.all.each do |payer|
       balances[payer[:name]] = payer[:point_total]
     end
+
     render json: balances
   end
 

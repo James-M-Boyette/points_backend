@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get "/transactions" => "transactions#index"
     post "/transactions/" => "transactions#create"
     get "/transactions/:id" => "transactions#show"
+    get "/transaction/seed" => "transactions#seed"
 
     get "/points_balance" => "payers#index"
     ## http://localhost:3000/api/points_balance

@@ -27,4 +27,8 @@ class Api::TransactionsController < ApplicationController
     @transaction = Transaction.find_by(id: params[:id])
     render "show.json.jb"
   end
+
+  def seed
+    Rails.application.load_seed
+  end
 end

@@ -19,8 +19,8 @@ Transaction.create!([
   { company_id: 0001, point_amount: 300, timestamp: "2020-10-31T10:00:00Z" },
 ])
 
-# Payer.create!([
-#   { name: "DANNON", company_id: 0001, point_total: 1100 },
-#   { name: "UNILEVER", company_id: 0002, point_total: 200 },
-#   { name: "MILLER COORS", company_id: 0003, point_total: 10000 },
-# ])
+Payer.create!([
+  { name: "DANNON", company_id: 0001, point_total: 1100 },
+  { name: "UNILEVER", company_id: 0002, point_total: 200 },
+  { name: "MILLER COORS", company_id: 0003, point_total: 10000 },
+])

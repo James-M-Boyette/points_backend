@@ -1,9 +1,11 @@
 class Api::PayersController < ApplicationController
   def index
+    ## Original index logic :
+
     # @payers = Payer.all
     # render "index.json.jb"
 
-    # To satisfy explicit output of exercise/request from Frontend designer, here is an alternative return:
+    ## To satisfy explicit output of exercise/request from Frontend designer, here is an alternative return :
 
     balances = {}
     Payer.all.each do |payer|

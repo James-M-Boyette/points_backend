@@ -58,5 +58,5 @@ A subsequent call to the points balance route, after the spend, should returns t
     "DANNON": 1000, 
     "UNILEVER": 0, 
     "MILLER COORS": 5300 
-} ![image](https://user-images.githubusercontent.com/79064297/126266620-29c20f1f-1fc7-40cd-a1fe-55655b416823.png)
+} 
 

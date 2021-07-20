@@ -1,7 +1,10 @@
 class Api::UserTransactionsController < ApplicationController
   def reconcile
     ## @points_balance will track what happens to the initial user expenditure as it's reconciled with the transactions in our Transactions table
-    @points_balance = params[:points].to_i
+    # @points_balance = params[:points].to_i
+
+    # Demo version :
+    @points_balance = 5000
     ## @expenditures will track what points are charged to each payer / company
     @expenditures = {}
 
@@ -50,4 +53,3 @@ class Api::UserTransactionsController < ApplicationController
     render json: @send_back
   end
 end
-

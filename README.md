@@ -1,9 +1,7 @@
-# README
+# README : The "points_backend" API
+> This was a backend API I was asked to assemble for a prospective employer
 
-# The points_backend
-## This was a backend API I was asked to assemble for a prospective employer
-
-## The highlights of this backend API are the following:
+### The highlights of this backend API are the following:
 * You can run an index action to see every transaction (that's been logged so-far) in the Transactions database (https://points-payer-backend.herokuapp.com/api/transactions)
 * Run an index action to see all payer point-totals in the Payers database (https://points-payer-backend.herokuapp.com/api/points_balance)
 * And you can even run a user-expenditure route (http://localhost:3000/api/spend_points)

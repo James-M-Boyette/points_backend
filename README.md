@@ -8,7 +8,8 @@
 - Run an index action to see all payer point-totals in the Payers database (https://points-payer-backend.herokuapp.com/api/points_balance)
 - And you can even run a user-expenditure route (https://points-payer-backend.herokuapp.com/api/spend_points)
   > Note:
-- _A seed file is provided, should you wish to download & create these demo databases ($ rails db:seed will create a Payer database & a Transactions database)_
+- _A seed file is provided, should you wish to download & create these demo databases ($ rails db:seed will create a Payer database & a Transactions database)_ .
+- This API was written in ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-darwin18]
 
 Please feel free to test these endpoints (baring in mind that calling the /spend_points endpoint will _alter_ the Payer database's _point totals_ each time it is run). If the /spend_points route is run more than once, **you will want to run** the /payers/reset route (https://points-payer-backend.herokuapp.com/api/payers/reset) *before the spend_points* route in order to **reset their points totals** and return the outcomes expected in the original exercise
 

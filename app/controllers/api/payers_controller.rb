@@ -19,4 +19,10 @@ class Api::PayersController < ApplicationController
     @payer = Payer.find_by(id: params[:id])
     render "show.json.jb"
   end
+
+  def reset
+    Payer.where(company_id: 1).update(point_total: 1100)
+    Payer.where(company_id: 2).update(point_total: 200)
+    Payer.where(company_id: 3).update(point_total: 10000)
+  end
 end

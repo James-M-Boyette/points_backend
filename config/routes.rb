@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     ## https://points-payer-backend.herokuapp.com/api/points_balance
     # get "/payers" => "payers#index"
     get "/payers/:id" => "payers#show"
+    get "/payers/reset" => "payers#reset"
 
     # post "/spend_points" => "user_transactions#reconcile"
     ## For Demo purposes
@@ -18,3 +19,6 @@ Rails.application.routes.draw do
     ## https://points-payer-backend.herokuapp.com/api/spend_points
   end
 end
+
+# heroku pg:reset --confirm points-payer-backend
+# heroku run rails db:setup

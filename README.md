@@ -8,7 +8,7 @@
 > Note:
 * *A seed file is provided, should you wish to download & create these demo databases ($ rails db:seed   will create a Payer database & a Transactions database)*
 
-Please feel free to test these endpoints (baring in mind that calling the /spend_points endpoint will *alter* the Payer database's *point totals* each time it is run)
+Please feel free to test these endpoints (baring in mind that calling the /spend_points endpoint will *alter* the Payer database's *point totals* each time it is run). If the /spend_points route is run more than once, you will want to run the /payers/reset route (https://points-payer-backend.herokuapp.com/api/payers/reset) in order to reset their points totals and return the outcomes expected in the original exercise
 
 # 
 

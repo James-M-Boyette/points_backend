@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     # post "/spend_points" => "user_transactions#reconcile"
     ## For Demo purposes
     get "/spend_points" => "user_transactions#reconcile"
-    ## http://localhost:3000/api/spend_points
+    ## https://points-payer-backend.herokuapp.com/api/spend_points
   end
 end

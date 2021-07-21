@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     # get "/transaction/seed" => "transactions#seed"
 
     get "/points_balance" => "payers#index"
+    get "/payers/reset" => "payers#reset"
     ## https://points-payer-backend.herokuapp.com/api/points_balance
     # get "/payers" => "payers#index"
     get "/payers/:id" => "payers#show"
-    get "/payers/reset" => "payers#reset"
 
     # post "/spend_points" => "user_transactions#reconcile"
     ## For Demo purposes

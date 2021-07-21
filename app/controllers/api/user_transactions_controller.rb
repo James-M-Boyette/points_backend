@@ -20,7 +20,6 @@ class Api::UserTransactionsController < ApplicationController
         @payer_balance = Payer.where(company_id: @current_transaction[:company_id]).pluck(:point_total).join().to_i - @current_transaction[:point_amount].to_i
         ## Using the company_id of the current_transaction, find the Payer (in the "Payer" table) with the matching company_id; then update that payer's point_total with our @payer_balance
         Payer.where(company_id: @current_transaction[:company_id]).update(point_total: @payer_balance)
-
         ## Log the company and transaction amount in an "@expenditures" hashmap, to be returned after:
         if @expenditures[Payer.where(company_id: transaction[:company_id]).pluck(:name).join()]
           @expenditures[Payer.where(company_id: transaction[:company_id]).pluck(:name).join()] += transaction[:point_amount] * -1
